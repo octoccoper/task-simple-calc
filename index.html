@@ -1,0 +1,66 @@
+<html>
+  <head>
+    <title>Калькулон</title>
+    <meta charset="utf-8" />
+    <script src="./solution.js"></script>
+    <script src="./demo.js" async defer></script>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        font-size: 16px;
+      }
+
+      label {
+        padding: 10px;
+        display: block;
+      }
+
+      main {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 10px;
+        background-color: #f3f3f3;
+      }
+
+      form {
+        width: 100%;
+      }
+
+      [data-result] {
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Калькулон</h1>
+    <main>
+      <form>
+        <label>
+          Первое число
+          <input name="first" />
+        </label>
+        <label>
+          Второе число
+          <input name="second" />
+        </label>
+        <label>
+          Операция
+          <select name="operation">
+            <option value="*">Умножение</option>
+            <option value="/">Деление</option>
+            <option value="+">Сложение</option>
+            <option value="-">Отрицание</option>
+          </select>
+        </label>
+        <label>
+          Ожидаемый результат
+          <input name="result" />
+        </label>
+        <input type="submit" value="Проверить!" />
+      </form>
+      <div data-result></div>
+    </main>
+  </body>
+</html>
