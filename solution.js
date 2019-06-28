@@ -1,41 +1,40 @@
 function calc(firstNumber, secondNumber, operation, result) {
   let operationResult;
+  let firstNumbParam, secondNumbParam, resultParam;
 
   if (typeof firstNumber === "string") {
-    firstNumber = parseFloat(firstNumber);
+    firstNumbParam = parseFloat(firstNumber);
   }
 
   if (typeof secondNumber === "string") {
-    secondNumber = parseFloat(secondNumber);
+    secondNumbParam = parseFloat(secondNumber);
   }
 
   if (typeof result === "string") {
-    result = parseFloat(result);
+    resultParam = parseFloat(result);
   }
 
-  if (firstNumber > 1000000 || secondNumber > 1000000) {
+  if (firstNumbParam > 1000000 || secondNumbParam > 1000000) {
     console.log(
       "You entered numbers more than 1000000, please enter less number."
     );
-    return;
+    return 0;
   }
 
   switch (operation) {
     case "+":
-      operationResult = firstNumber + secondNumber;
+      operationResult = firstNumbParam + secondNumbParam;
       break;
     case "-":
-      operationResult = firstNumber - secondNumber;
+      operationResult = firstNumbParam - secondNumbParam;
       break;
     case "/":
-      operationResult = firstNumber / secondNumber;
+      operationResult = firstNumbParam / secondNumbParam;
       break;
     case "*":
-      operationResult = firstNumber * secondNumber;
+      operationResult = firstNumbParam * secondNumbParam;
       break;
-    default:
-      console.log("Sorry, we are out of " + operation + ".");
   }
 
-  return operationResult === result;
+  return operationResult === resultParam;
 }
