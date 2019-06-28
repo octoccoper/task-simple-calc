@@ -1,7 +1,18 @@
 function calc(firstNumber, secondNumber, operation, result) {
-  let operationResult, firstNumbParam, secondNumbParam, resultParam, errorDiv;
-  errorDiv = document.querySelector("[data-error]");
-  errorDiv.textContent = "";
+  let operationResult,
+    firstNumbParam,
+    secondNumbParam,
+    resultParam,
+    errorDiv,
+    dataResultDiv,
+    parentResultDiv;
+
+  errorDiv = document.createElement("div");
+  errorDiv.setAttribute("data-error", "");
+
+  dataResultDiv = document.querySelectorAll("[data-result]");
+  parentResultDiv = dataResultDiv.parentNode;
+  parentResultDiv.insertBefore(errorDiv, dataResultDiv.nextSibling);
 
   if (firstNumber === "") {
     errorDiv.textContent =
