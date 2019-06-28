@@ -31,6 +31,11 @@
       [data-result] {
         font-weight: bold;
       }
+      [data-error] {
+        color: red;
+        margin-top: 20px;
+        margin-bottom: 10px;
+      }
     </style>
   </head>
   <body>
@@ -48,7 +53,7 @@
         <label>
           Операция
           <select name="operation">
-            <option value="*">Умножение</option>
+            <option selected="selected" value="*">Умножение</option>
             <option value="/">Деление</option>
             <option value="+">Сложение</option>
             <option value="-">Отрицание</option>
@@ -61,6 +66,7 @@
         <input type="submit" value="Проверить!" />
       </form>
       <div data-result></div>
+      <div data-error></div>
     </main>
   </body>
 </html>
