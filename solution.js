@@ -13,9 +13,7 @@ function calc(firstNumber, secondNumber, operation, result) {
 
     dataResultDiv = document.querySelectorAll('[data-result]');
     if (!dataResultDiv) {
-      console.error(
-        "ERROR: div with attribute [data-result] doesn't exist in the HTML structure",
-      );
+      console.error("ERROR: div with attribute [data-result] doesn't exist in the HTML structure");
       return false;
     }
     parentResultDiv = dataResultDiv[0].parentNode;
