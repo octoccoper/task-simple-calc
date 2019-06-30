@@ -84,5 +84,7 @@ function calc(firstNumber, secondNumber, operation, result) {
       operationResult = firstNumbParam * secondNumbParam;
   }
 
+  console.log('operationResult=', operationResult);
+  console.log('resultParam=', resultParam);
   return operationResult === resultParam;
 }
