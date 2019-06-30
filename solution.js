@@ -7,15 +7,31 @@ function calc(firstNumber, secondNumber, operation, result) {
     dataResultDiv,
     parentResultDiv;
 
-  errorDiv = document.createElement("div");
-  errorDiv.setAttribute("data-error", "");
+  if (!errorDiv) {
+    errorDiv = document.createElement("div");
+    errorDiv.setAttribute("data-error", "");
 
-  dataResultDiv = document.querySelectorAll("[data-result]");
-  parentResultDiv = dataResultDiv.parentNode;
-  parentResultDiv.insertBefore(errorDiv, dataResultDiv.nextSibling);
+    dataResultDiv = document.querySelectorAll("[data-result]");
+    if (!dataResultDiv) {
+      console.log(
+        "ERROR: div with attribute [data-result] doesn't exist in the HTML structure"
+      );
+      return false;
+    } else {
+      parentResultDiv = dataResultDiv[0].parentNode;
+      parentResultDiv.insertBefore(errorDiv, dataResultDiv.nextSibling);
+    }
+  }
+
+  errorDiv = document.querySelectorAll("[data-error]");
+
+  if (errorDiv.length > 0) {
+    errorDiv[0].textContent = "";
+    errorDiv.length = 0;
+  }
 
   if (firstNumber === "") {
-    errorDiv.textContent =
+    errorDiv[0].textContent =
       "ERROR: The first number is empty. Please add value.";
     return false;
   }
@@ -25,19 +41,19 @@ function calc(firstNumber, secondNumber, operation, result) {
   }
 
   if (firstNumber < 1) {
-    errorDiv.textContent =
+    errorDiv[0].textContent =
       "ERROR: First number you entered is less than 1, please enter the bigger number.";
     return false;
   }
 
   if (firstNumber > 1000000) {
-    errorDiv.textContent =
+    errorDiv[0].textContent =
       "ERROR: First number you entered is bigger than 1000000, please enter the small number.";
     return false;
   }
 
   if (secondNumber === "") {
-    errorDiv.textContent =
+    errorDiv[0].textContent =
       "ERROR: The second number is empty. Please add value.";
     return false;
   }
@@ -47,19 +63,19 @@ function calc(firstNumber, secondNumber, operation, result) {
   }
 
   if (secondNumber < 1) {
-    errorDiv.textContent =
+    errorDiv[0].textContent =
       "ERROR: Second number you entered is less than 1, please enter the bigger number.";
     return false;
   }
 
   if (secondNumber > 1000000) {
-    errorDiv.textContent =
+    errorDiv[0].textContent =
       "ERROR: second number you entered is bigger than 1000000, please enter the small number.";
     return false;
   }
 
   if (result === "") {
-    errorDiv.textContent = "ERROR: The result is empty. Please add value.";
+    errorDiv[0].textContent = "ERROR: The result is empty. Please add value.";
     return false;
   }
 
@@ -68,13 +84,13 @@ function calc(firstNumber, secondNumber, operation, result) {
   }
 
   if (result < 1) {
-    errorDiv.textContent =
+    errorDiv[0].textContent =
       "ERROR: the result you entered is less than 1, please enter the bigger number.";
     return false;
   }
 
   if (result > 1000000) {
-    errorDiv.textContent =
+    errorDiv[0].textContent =
       "ERROR: The result number you entered is bigger than 1000000, please enter the small number.";
     return false;
   }
