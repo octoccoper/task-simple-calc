@@ -47,12 +47,17 @@ function calc(firstNumber, secondNumber, operation, result) {
     return false;
   }
 
+  if (secondNumbParam === 0) {
+    return false;
+  }
+
   if (secondNumber > 1000000) {
     console.log(
       "ERROR: second number you entered is bigger than 1000000, please enter the small number."
     );
     return false;
   }
+
 
   if (result === "") {
     console.log("ERROR: The result is empty. Please add value.");
@@ -81,16 +86,16 @@ function calc(firstNumber, secondNumber, operation, result) {
 
   switch (operation) {
     case "+":
-      operationResult = firstNumbParam + secondNumbParam;
+      operationResult = (Math.floor((firstNumbParam + secondNumbParam)*1000000))/1000000;
       break;
     case "-":
-      operationResult = firstNumbParam - secondNumbParam;
+      operationResult = (Math.floor((firstNumbParam - secondNumbParam)*1000000))/1000000;
       break;
     case "/":
-      operationResult = firstNumbParam / secondNumbParam;
+      operationResult = (Math.floor((firstNumbParam / secondNumbParam)*1000000))/1000000;
       break;
     case "*":
-      operationResult = firstNumbParam * secondNumbParam;
+      operationResult = (Math.floor((firstNumbParam * secondNumbParam)*1000000))/1000000;
       break;
     default:
       operationResult = firstNumbParam * secondNumbParam;
@@ -98,7 +103,7 @@ function calc(firstNumber, secondNumber, operation, result) {
 
   console.log("firstNumbParam=", firstNumbParam);
   console.log("secondNumbParam=", secondNumbParam);
-  console.log("resultParam=", resultParam);
+  console.log("operation=", operation);
   console.log("operationResult=", operationResult);
   console.log("resultParam=", resultParam);
   console.log(
