@@ -15,9 +15,9 @@ function calc(firstNumber, secondNumber, operation, result) {
     firstNumbParam = firstNumber;
   }
 
-  if (firstNumber < 1) {
+  if (firstNumber < 0) {
     console.log(
-      "ERROR: First number you entered is less than 1, please enter the bigger number."
+      "ERROR: First number you entered is less than 0, please enter the bigger number."
     );
     return false;
   }
@@ -40,14 +40,17 @@ function calc(firstNumber, secondNumber, operation, result) {
     secondNumbParam = secondNumber;
   }
 
-  if (secondNumber < 1) {
+  if (secondNumber < 0) {
     console.log(
-      "ERROR: Second number you entered is less than 1, please enter the bigger number."
+      "ERROR: Second number you entered is less than 0, please enter the bigger number."
     );
     return false;
   }
 
   if (secondNumbParam === 0) {
+    console.log(
+      "ERROR: Second number you entered is 0, please enter the bigger number."
+    );
     return false;
   }
 
@@ -69,9 +72,9 @@ function calc(firstNumber, secondNumber, operation, result) {
     resultParam = result;
   }
 
-  if (result < 1) {
+  if (result < 0) {
     console.log(
-      "ERROR: the result you entered is less than 1, please enter the bigger number."
+      "ERROR: the result you entered is less than 0, please enter the bigger number."
     );
     return false;
   }
@@ -104,6 +107,11 @@ function calc(firstNumber, secondNumber, operation, result) {
       operationResult = firstNumbParam * secondNumbParam;
   }
 
+  if (isFloat(operationResult)) {
+    operationResult = Math.floor(operationResult);
+    resultParam = Math.floor(resultParam);
+  }
+
   console.log("firstNumbParam=", firstNumbParam);
   console.log("secondNumbParam=", secondNumbParam);
   console.log("operation=", operation);
@@ -113,5 +121,10 @@ function calc(firstNumber, secondNumber, operation, result) {
     "operationResult === resultParam is: ",
     operationResult === resultParam
   );
+
   return operationResult === resultParam;
+}
+
+function isFloat(n) {
+  return Number(n) === n && n % 1 !== 0;
 }
