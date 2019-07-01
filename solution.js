@@ -58,7 +58,6 @@ function calc(firstNumber, secondNumber, operation, result) {
     return false;
   }
 
-
   if (result === "") {
     console.log("ERROR: The result is empty. Please add value.");
     return false;
@@ -86,16 +85,20 @@ function calc(firstNumber, secondNumber, operation, result) {
 
   switch (operation) {
     case "+":
-      operationResult = (Math.floor((firstNumbParam + secondNumbParam)*1000000))/1000000;
+      operationResult =
+        Math.floor((firstNumbParam + secondNumbParam) * 1000000) / 1000000;
       break;
     case "-":
-      operationResult = (Math.floor((firstNumbParam - secondNumbParam)*1000000))/1000000;
+      operationResult =
+        Math.floor((firstNumbParam - secondNumbParam) * 1000000) / 1000000;
       break;
     case "/":
-      operationResult = (Math.floor((firstNumbParam / secondNumbParam)*1000000))/1000000;
+      operationResult =
+        Math.floor((firstNumbParam / secondNumbParam) * 1000000) / 1000000;
       break;
     case "*":
-      operationResult = (Math.floor((firstNumbParam * secondNumbParam)*1000000))/1000000;
+      operationResult =
+        Math.floor(firstNumbParam * secondNumbParam * 1000000) / 1000000;
       break;
     default:
       operationResult = firstNumbParam * secondNumbParam;
