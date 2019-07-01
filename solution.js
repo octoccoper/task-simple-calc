@@ -1,3 +1,7 @@
+function isFloat(n) {
+  return Number(n) === n && n % 1 !== 0;
+}
+
 function calc(firstNumber, secondNumber, operation, result) {
   let operationResult;
   let firstNumbParam;
@@ -123,8 +127,4 @@ function calc(firstNumber, secondNumber, operation, result) {
   );
 
   return operationResult === resultParam;
-}
-
-function isFloat(n) {
-  return Number(n) === n && n % 1 !== 0;
 }
