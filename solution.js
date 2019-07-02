@@ -38,15 +38,14 @@ function calc(firstNumber, secondNumber, operation, result) {
     return false;
   }
 
-  if (secondNumber === 0) {
-    console.log("ERROR: The second number is 0. Please add another value.");
-    return false;
-  }
-
   if (typeof secondNumber === "string") {
     secondNumbParam = parseFloat(secondNumber);
   } else {
     secondNumbParam = secondNumber;
+  }
+
+  if (secondNumbParam === 0) {
+    console.log("ERROR: The second number is 0. Please add another value.");
   }
 
   if (secondNumbParam < 0) {
@@ -85,6 +84,10 @@ function calc(firstNumber, secondNumber, operation, result) {
     console.log(
       "ERROR: The result number you entered is bigger than 1000000, please enter the small number."
     );
+    if (resultParam === Infinity) {
+      console.log("WARNING: You entered Infinity as result");
+      return true;
+    }
     return false;
   }
 
