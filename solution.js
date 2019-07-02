@@ -49,13 +49,6 @@ function calc(firstNumber, secondNumber, operation, result) {
     return false;
   }
 
-  if (secondNumbParam === 0) {
-    console.log(
-      "ERROR: Second number you entered is 0, please enter the bigger number."
-    );
-    return false;
-  }
-
   if (secondNumbParam > 1000000) {
     console.log(
       "ERROR: second number you entered is bigger than 1000000, please enter the small number."
@@ -90,29 +83,19 @@ function calc(firstNumber, secondNumber, operation, result) {
 
   switch (operation) {
     case "+":
-      operationResult = parseFloat(
-        (firstNumbParam + secondNumbParam).toFixed(6)
-      );
+      operationResult = firstNumbParam + secondNumbParam;
       break;
     case "-":
-      operationResult = parseFloat(
-        (firstNumbParam - secondNumbParam).toFixed(6)
-      );
+      operationResult = firstNumbParam - secondNumbParam;
       break;
     case "/":
-      operationResult = parseFloat(
-        (firstNumbParam / secondNumbParam).toFixed(6)
-      );
+      operationResult = firstNumbParam / secondNumbParam;
       break;
     case "*":
-      operationResult = parseFloat(
-        (firstNumbParam * secondNumbParam).toFixed(6)
-      );
+      operationResult = firstNumbParam * secondNumbParam;
       break;
     default:
-      operationResult = parseFloat(
-        (firstNumbParam * secondNumbParam).toFixed(6)
-      );
+      operationResult = firstNumbParam * secondNumbParam;
   }
 
   console.log("firstNumbParam=", firstNumbParam);
