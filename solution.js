@@ -73,13 +73,6 @@ function calc(firstNumber, secondNumber, operation, result) {
     resultParam = result;
   }
 
-  if (resultParam <= 0) {
-    console.log(
-      "ERROR: the result you entered is less than 0, please enter the bigger number."
-    );
-    return false;
-  }
-
   if (resultParam > 1000000) {
     console.log(
       "ERROR: The result number you entered is bigger than 1000000, please enter the small number."
