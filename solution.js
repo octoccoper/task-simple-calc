@@ -96,25 +96,22 @@ function calc(firstNumber, secondNumber, operation, result) {
         Math.floor((firstNumbParam + secondNumbParam) * 1000000) / 1000000;
       break;
     case "-":
-      operationResult =
-        Math.floor((firstNumbParam - secondNumbParam) * 1000000) / 1000000;
+      operationResult = firstNumbParam - secondNumbParam;
       break;
     case "/":
-      operationResult =
-        Math.floor((firstNumbParam / secondNumbParam) * 1000000) / 1000000;
+      operationResult = firstNumbParam / secondNumbParam;
       break;
     case "*":
-      operationResult =
-        Math.floor(firstNumbParam * secondNumbParam * 1000000) / 1000000;
+      operationResult = firstNumbParam * secondNumbParam;
       break;
     default:
       operationResult = firstNumbParam * secondNumbParam;
   }
 
-  if (isFloat(operationResult)) {
-    operationResult = Math.floor(operationResult);
-    resultParam = Math.floor(resultParam);
-  }
+  // if (isFloat(operationResult)) {
+  //   operationResult = Math.floor(operationResult);
+  //   resultParam = Math.floor(resultParam);
+  // }
 
   console.log("firstNumbParam=", firstNumbParam);
   console.log("secondNumbParam=", secondNumbParam);
@@ -126,5 +123,8 @@ function calc(firstNumber, secondNumber, operation, result) {
     operationResult === resultParam
   );
 
-  return operationResult === resultParam;
+  return (
+    Math.abs(operationResult - resultParam) <
+    Number.EPSILON * Math.max(Math.abs(operationResult), Math.abs(resultParam))
+  );
 }
