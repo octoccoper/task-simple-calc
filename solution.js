@@ -1,6 +1,4 @@
-function isFloat(n) {
-  return Number(n) === n && n % 1 !== 0;
-}
+const equalValues = (a, b) => Math.abs(a - b) < Number.EPSILON || a === b;
 
 function calc(firstNumber, secondNumber, operation, result) {
   let operationResult;
@@ -19,14 +17,14 @@ function calc(firstNumber, secondNumber, operation, result) {
     firstNumbParam = firstNumber;
   }
 
-  if (firstNumber < 0) {
+  if (firstNumbParam <= 0) {
     console.log(
       "ERROR: First number you entered is less than 0, please enter the bigger number."
     );
     return false;
   }
 
-  if (firstNumber > 1000000) {
+  if (firstNumbParam > 1000000) {
     console.log(
       "ERROR: First number you entered is bigger than 1000000, please enter the small number."
     );
@@ -44,7 +42,7 @@ function calc(firstNumber, secondNumber, operation, result) {
     secondNumbParam = secondNumber;
   }
 
-  if (secondNumber < 0) {
+  if (secondNumbParam < 0) {
     console.log(
       "ERROR: Second number you entered is less than 0, please enter the bigger number."
     );
@@ -58,7 +56,7 @@ function calc(firstNumber, secondNumber, operation, result) {
     return false;
   }
 
-  if (secondNumber > 1000000) {
+  if (secondNumbParam > 1000000) {
     console.log(
       "ERROR: second number you entered is bigger than 1000000, please enter the small number."
     );
@@ -76,14 +74,14 @@ function calc(firstNumber, secondNumber, operation, result) {
     resultParam = result;
   }
 
-  if (result < 0) {
+  if (resultParam <= 0) {
     console.log(
       "ERROR: the result you entered is less than 0, please enter the bigger number."
     );
     return false;
   }
 
-  if (result > 1000000) {
+  if (resultParam > 1000000) {
     console.log(
       "ERROR: The result number you entered is bigger than 1000000, please enter the small number."
     );
@@ -92,26 +90,30 @@ function calc(firstNumber, secondNumber, operation, result) {
 
   switch (operation) {
     case "+":
-      operationResult =
-        Math.floor((firstNumbParam + secondNumbParam) * 1000000) / 1000000;
+      operationResult = parseFloat(
+        (firstNumbParam + secondNumbParam).toFixed(6)
+      );
       break;
     case "-":
-      operationResult = firstNumbParam - secondNumbParam;
+      operationResult = parseFloat(
+        (firstNumbParam - secondNumbParam).toFixed(6)
+      );
       break;
     case "/":
-      operationResult = firstNumbParam / secondNumbParam;
+      operationResult = parseFloat(
+        (firstNumbParam / secondNumbParam).toFixed(6)
+      );
       break;
     case "*":
-      operationResult = firstNumbParam * secondNumbParam;
+      operationResult = parseFloat(
+        (firstNumbParam * secondNumbParam).toFixed(6)
+      );
       break;
     default:
-      operationResult = firstNumbParam * secondNumbParam;
+      operationResult = parseFloat(
+        (firstNumbParam * secondNumbParam).toFixed(6)
+      );
   }
-
-  // if (isFloat(operationResult)) {
-  //   operationResult = Math.floor(operationResult);
-  //   resultParam = Math.floor(resultParam);
-  // }
 
   console.log("firstNumbParam=", firstNumbParam);
   console.log("secondNumbParam=", secondNumbParam);
@@ -119,12 +121,9 @@ function calc(firstNumber, secondNumber, operation, result) {
   console.log("operationResult=", operationResult);
   console.log("resultParam=", resultParam);
   console.log(
-    "operationResult === resultParam is: ",
-    operationResult === resultParam
+    "equalValues(resultParam, operationResult) is: ",
+    equalValues(resultParam, operationResult)
   );
 
-  return (
-    Math.abs(operationResult - resultParam) <
-    Number.EPSILON * Math.max(Math.abs(operationResult), Math.abs(resultParam))
-  );
+  return equalValues(resultParam, operationResult);
 }
