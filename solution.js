@@ -1,10 +1,13 @@
-const equalValues = (a, b) => Math.abs(a - b) < Number.EPSILON || a === b;
+const equalValues = (a, b) =>
+  Math.abs(a - b) < Number.EPSILON * Math.max(Math.abs(a), Math.abs(b)) ||
+  a === b;
 
 function calc(firstNumber, secondNumber, operation, result) {
   let operationResult;
   let firstNumbParam;
   let secondNumbParam;
   let resultParam;
+  let precision;
 
   if (firstNumber === "") {
     console.log("ERROR: The first number is empty. Please add value.");
@@ -33,6 +36,11 @@ function calc(firstNumber, secondNumber, operation, result) {
 
   if (secondNumber === "") {
     console.log("ERROR: The second number is empty. Please add value.");
+    return false;
+  }
+
+  if (secondNumber === 0) {
+    console.log("ERROR: The second number is 0. Please add another value.");
     return false;
   }
 
@@ -86,7 +94,9 @@ function calc(firstNumber, secondNumber, operation, result) {
       operationResult = firstNumbParam + secondNumbParam;
       break;
     case "-":
-      operationResult = firstNumbParam - secondNumbParam;
+      operationResult = parseFloat(
+        firstNumbParam - secondNumbParam.toFixed(20)
+      );
       break;
     case "/":
       operationResult = firstNumbParam / secondNumbParam;
