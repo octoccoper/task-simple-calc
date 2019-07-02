@@ -7,7 +7,6 @@ function calc(firstNumber, secondNumber, operation, result) {
   let firstNumbParam;
   let secondNumbParam;
   let resultParam;
-  let precision;
 
   if (firstNumber === "") {
     console.log("ERROR: The first number is empty. Please add value.");
@@ -91,21 +90,29 @@ function calc(firstNumber, secondNumber, operation, result) {
 
   switch (operation) {
     case "+":
-      operationResult = firstNumbParam + secondNumbParam;
+      operationResult = parseFloat(
+        (firstNumbParam + secondNumbParam).toFixed(10)
+      );
       break;
     case "-":
       operationResult = parseFloat(
-        firstNumbParam - secondNumbParam.toFixed(20)
+        (firstNumbParam - secondNumbParam).toFixed(10)
       );
       break;
     case "/":
-      operationResult = firstNumbParam / secondNumbParam;
+      operationResult = parseFloat(firstNumbParam / secondNumbParam).toFixed(
+        10
+      );
       break;
     case "*":
-      operationResult = firstNumbParam * secondNumbParam;
+      operationResult = parseFloat(firstNumbParam * secondNumbParam).toFixed(
+        10
+      );
       break;
     default:
-      operationResult = firstNumbParam * secondNumbParam;
+      operationResult = parseFloat(firstNumbParam * secondNumbParam).toFixed(
+        10
+      );
   }
 
   console.log("firstNumbParam=", firstNumbParam);
